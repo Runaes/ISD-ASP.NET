@@ -228,6 +228,14 @@ namespace WebApplication1.Data.Migrations
 						.HasForeignKey("UserId")
 						.OnDelete(DeleteBehavior.Cascade);
 				});
+
+			modelBuilder.Entity("Movie", m =>
+			{
+				m.HasOne("Stock").WithMany().HasForeignKey("Product_ID");
+				m.HasOne("OrderDetail").WithMany().HasForeignKey("Product_ID");
+				m.HasMany("MovieGenreLink").WithOne().HasForeignKey("Movie_ID");
+
+			});
 #pragma warning restore 612, 618
 		}
 	}
