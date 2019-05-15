@@ -7,7 +7,6 @@ namespace OMS.Models
 {
 	public class Stock
 	{
-		public int Movie_Id { get; set; }
 		public int Quantity { get; set; }
 	}
 }
