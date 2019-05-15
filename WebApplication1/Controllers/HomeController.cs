@@ -10,21 +10,21 @@ namespace WebApplication1.Controllers
 {
 	public class HomeController : Controller
 	{
-		public IActionResult Index()
+        public IActionResult Index()
 		{
 			return View();
 		}
 
 		public IActionResult About()
 		{
-			ViewData["Message"] = "Your application description page.";
+			ViewData["Message"] = "About the Online Movie Store.";
 
 			return View();
 		}
 
 		public IActionResult Contact()
 		{
-			ViewData["Message"] = "Your contact page.";
+			ViewData["Message"] = "Contact details.";
 
 			return View();
 		}
