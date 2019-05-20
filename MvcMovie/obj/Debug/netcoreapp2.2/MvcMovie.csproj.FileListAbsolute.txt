@@ -39,7 +39,6 @@ C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\bin\Debug\netcoreapp2.2\
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\bin\Debug\netcoreapp2.2\MvcMovie.pdb
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\bin\Debug\netcoreapp2.2\MvcMovie.Views.dll
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\bin\Debug\netcoreapp2.2\MvcMovie.Views.pdb
-C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.csprojAssemblyReference.cache
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.csproj.CoreCompileInputs.cache
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.RazorAssemblyInfo.cache
 C:\Users\wardl\source\repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.RazorAssemblyInfo.cs
