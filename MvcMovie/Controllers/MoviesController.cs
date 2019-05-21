@@ -19,11 +19,11 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string movieGenre, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string movieGenre, string searchString, string currentGenre)
         {
 
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "TitleDescending" : "TitleAscending";
+            ViewBag.NameSortParm = sortOrder == "TitleAscending" ? "TitleDescending" : "TitleAscending";
             ViewBag.DateSortParm = sortOrder == "ReleaseDateAscending" ? "ReleaseDateDescending" : "ReleaseDateAscending";
             ViewBag.GenreSortParm = sortOrder == "GenreAscending" ? "GenreDescending" : "GenreAscending";
             ViewBag.PriceSortParm = sortOrder == "PriceAscending" ? "PriceDescending" : "PriceAscending";
@@ -35,6 +35,101 @@ namespace MvcMovie.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+
+            if (movieGenre == null)
+            {
+                movieGenre = currentGenre;
+            }
+
+            ViewBag.CurrentGenre = movieGenre;
+
+            var movies = from s in _context.Movie
+                         select s;
+
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from s in _context.Movie
+                                            orderby s.Genre
+                                            select s.Genre;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(s => s.Genre == movieGenre);
+            }
+
+            switch (sortOrder)
+            {
+                case "TitleAscending":
+                    movies = movies.OrderBy(s => s.Title);
+                    break;
+                case "TitleDescending":
+                    movies = movies.OrderByDescending(s => s.Title);
+                    break;
+                case "ReleaseDateAscending":
+                    movies = movies.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "ReleaseDateDescending":
+                    movies = movies.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                case "GenreAscending":
+                    movies = movies.OrderBy(s => s.Genre);
+                    break;
+                case "GenreDescending":
+                    movies = movies.OrderByDescending(s => s.Genre);
+                    break;
+                case "PriceAscending":
+                    movies = movies.OrderBy(s => s.Price);
+                    break;
+                case "PriceDescending":
+                    movies = movies.OrderByDescending(s => s.Price);
+                    break;
+                case "StockAscending":
+                    movies = movies.OrderBy(s => s.Stock);
+                    break;
+                case "StockDescending":
+                    movies = movies.OrderByDescending(s => s.Stock);
+                    break;
+                default:
+                    movies = movies.OrderByDescending(s => s.Title);
+                    break;
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Movies = await movies.ToListAsync()
+            };
+
+            return View(movieGenreVM);
+        }
+
+        public async Task<IActionResult> BrowseCollection(string sortOrder, string currentFilter, string movieGenre, string searchString, string currentGenre)
+        {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = sortOrder == "TitleAscending" ? "TitleDescending" : "TitleAscending";
+            ViewBag.DateSortParm = sortOrder == "ReleaseDateAscending" ? "ReleaseDateDescending" : "ReleaseDateAscending";
+            ViewBag.GenreSortParm = sortOrder == "GenreAscending" ? "GenreDescending" : "GenreAscending";
+            ViewBag.PriceSortParm = sortOrder == "PriceAscending" ? "PriceDescending" : "PriceAscending";
+            ViewBag.StockSortParm = sortOrder == "StockAscending" ? "StockDescending" : "StockAscending";
+
+            if (searchString == null)
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (movieGenre == null)
+            {
+                movieGenre = currentGenre;
+            }
+
+            ViewBag.CurrentGenre = movieGenre;
 
             var movies = from s in _context.Movie
                          select s;

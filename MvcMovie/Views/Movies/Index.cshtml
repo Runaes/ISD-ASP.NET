@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Browse Collection</h1>
+<h1>Manage Collection</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,13 +12,15 @@
 <form asp-controller="Movies" asp-action="Index" method="get">
     <p>
 
-        Select genre:    <select asp-for="MovieGenre" asp-items="Model.Genres">
+        Search by genre:    <select asp-for="MovieGenre" asp-items="Model.Genres">
             <option value="">All</option>
         </select>
     </p>
     <p>
         Search by title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Apply filter" />
+    </p>
+    <p>
+        <input type="submit" value="Search" />
     </p>
 </form>
 
@@ -26,19 +28,19 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Title", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.NameSortParm})
+                @Html.ActionLink("Title", "Index", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.NameSortParm})
             </th>
             <th>
-                @Html.ActionLink("Release Date", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.DateSortParm})
+                @Html.ActionLink("Release Date", "Index", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.DateSortParm})
             </th>
             <th>
-                @Html.ActionLink("Genre", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.GenreSortParm})
+                @Html.ActionLink("Genre", "Index", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.GenreSortParm})
             </th>
             <th>
-                @Html.ActionLink("Price", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.PriceSortParm})
+                @Html.ActionLink("Price", "Index", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.PriceSortParm})
             </th>
             <th>
-                @Html.ActionLink("Stock", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.StockSortParm})
+                @Html.ActionLink("Stock", "Index", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.StockSortParm})
             </th>
             <th></th>
         </tr>
