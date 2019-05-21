@@ -66,3 +66,4 @@ C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\
 C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.pdb
 C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.csproj.CopyComplete
 C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Movies\BrowseCollection.g.cshtml.cs
+C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Movies\EditDetails.g.cshtml.cs
