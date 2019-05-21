@@ -30,10 +30,11 @@ namespace MvcMovie.Controllers
             ViewBag.StockSortParm = sortOrder == "StockAscending" ? "StockDescending" : "StockAscending";
             var movies = from m in _context.Movie
                          select m;
+
             // Use LINQ to get list of genres.
-            IQueryable<string> genreQuery = from m in _context.Movie
-                                            orderby m.Genre
-                                            select m.Genre;
+            IQueryable<string> genreQuery = from s in _context.Movie
+                                            orderby s.Genre
+                                            select s.Genre;
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -42,7 +43,7 @@ namespace MvcMovie.Controllers
 
             if (!string.IsNullOrEmpty(movieGenre))
             {
-                movies = movies.Where(x => x.Genre == movieGenre);
+                movies = movies.Where(s => s.Genre == movieGenre);
             }
 
             switch (sortOrder)
