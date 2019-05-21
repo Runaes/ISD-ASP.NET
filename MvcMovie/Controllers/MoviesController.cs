@@ -23,8 +23,11 @@ namespace MvcMovie.Controllers
         {
 
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = sortOrder == "Title" ? "ReleaseDate" : "Title";
-            ViewBag.DateSortParm = sortOrder == "ReleaseDate" ? "Title" : "ReleaseDate";
+            ViewBag.NameSortParm = sortOrder == "TitleAscending" ? "TitleDescending" : "TitleAscending";
+            ViewBag.DateSortParm = sortOrder == "ReleaseDateAscending" ? "ReleaseDateDescending" : "ReleaseDateAscending";
+            ViewBag.GenreSortParm = sortOrder == "GenreAscending" ? "GenreDescending" : "GenreAscending";
+            ViewBag.PriceSortParm = sortOrder == "PriceAscending" ? "PriceDescending" : "PriceAscending";
+            ViewBag.StockSortParm = sortOrder == "StockAscending" ? "StockDescending" : "StockAscending";
             var movies = from m in _context.Movie
                          select m;
             // Use LINQ to get list of genres.
@@ -44,17 +47,38 @@ namespace MvcMovie.Controllers
 
             switch (sortOrder)
             {
-                case "Title":
+                case "TitleAscending":
                     movies = movies.OrderBy(s => s.Title);
                     break;
-                case "ReleaseDate":
+                case "TitleDescending":
+                    movies = movies.OrderByDescending(s => s.Title);
+                    break;
+                case "ReleaseDateAscending":
                     movies = movies.OrderBy(s => s.ReleaseDate);
                     break;
-                case "Price":
+                case "ReleaseDateDescending":
+                    movies = movies.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                case "GenreAscending":
+                    movies = movies.OrderBy(s => s.Genre);
+                    break;
+                case "GenreDescending":
+                    movies = movies.OrderByDescending(s => s.Genre);
+                    break;
+                case "PriceAscending":
+                    movies = movies.OrderBy(s => s.Price);
+                    break;
+                case "PriceDescending":
                     movies = movies.OrderByDescending(s => s.Price);
                     break;
-                default:
+                case "StockAscending":
                     movies = movies.OrderBy(s => s.Stock);
+                    break;
+                case "StockDescending":
+                    movies = movies.OrderByDescending(s => s.Stock);
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Title);
                     break;
             }
 
