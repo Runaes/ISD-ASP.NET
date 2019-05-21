@@ -26,19 +26,19 @@
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm})
+                @Html.ActionLink("Title", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.NameSortParm})
             </th>
             <th>
-                @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm})
+                @Html.ActionLink("Release Date", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.DateSortParm})
             </th>
             <th>
-                @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm})
+                @Html.ActionLink("Genre", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.GenreSortParm})
             </th>
             <th>
-                @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm})
+                @Html.ActionLink("Price", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.PriceSortParm})
             </th>
             <th>
-                @Html.ActionLink("Stock", "Index", new { sortOrder = ViewBag.StockSortParm})
+                @Html.ActionLink("Stock", "Index", new { currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.StockSortParm})
             </th>
             <th></th>
         </tr>

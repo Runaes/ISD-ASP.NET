@@ -19,17 +19,24 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string sortOrder, string movieGenre, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string movieGenre, string searchString)
         {
 
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = sortOrder == "TitleAscending" ? "TitleDescending" : "TitleAscending";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "TitleDescending" : "TitleAscending";
             ViewBag.DateSortParm = sortOrder == "ReleaseDateAscending" ? "ReleaseDateDescending" : "ReleaseDateAscending";
             ViewBag.GenreSortParm = sortOrder == "GenreAscending" ? "GenreDescending" : "GenreAscending";
             ViewBag.PriceSortParm = sortOrder == "PriceAscending" ? "PriceDescending" : "PriceAscending";
             ViewBag.StockSortParm = sortOrder == "StockAscending" ? "StockDescending" : "StockAscending";
 
-                var movies = from s in _context.Movie
+            if (searchString == null)
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var movies = from s in _context.Movie
                          select s;
 
             // Use LINQ to get list of genres.
@@ -80,7 +87,7 @@ namespace MvcMovie.Controllers
                     movies = movies.OrderByDescending(s => s.Stock);
                     break;
                 default:
-                    movies = movies.OrderBy(s => s.Title);
+                    movies = movies.OrderByDescending(s => s.Title);
                     break;
             }
 
