@@ -27,9 +27,12 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("Genre");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<int>("Stock");
 
                     b.Property<string>("Title");
 
