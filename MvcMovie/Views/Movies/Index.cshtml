@@ -29,16 +29,16 @@
                 @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm})
             </th>
             <th>
-                @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm})
             </th>
             <th>
-                @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm })
+                @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm})
             </th>
             <th>
-                @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm })
+                @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParm})
             </th>
             <th>
-                @Html.ActionLink("Stock", "Index", new { sortOrder = ViewBag.StockSortParm })
+                @Html.ActionLink("Stock", "Index", new { sortOrder = ViewBag.StockSortParm})
             </th>
             <th></th>
         </tr>
@@ -46,25 +46,28 @@
     <tbody>
         @foreach (var item in Model.Movies)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

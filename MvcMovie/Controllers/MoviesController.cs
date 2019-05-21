@@ -28,8 +28,9 @@ namespace MvcMovie.Controllers
             ViewBag.GenreSortParm = sortOrder == "GenreAscending" ? "GenreDescending" : "GenreAscending";
             ViewBag.PriceSortParm = sortOrder == "PriceAscending" ? "PriceDescending" : "PriceAscending";
             ViewBag.StockSortParm = sortOrder == "StockAscending" ? "StockDescending" : "StockAscending";
-            var movies = from m in _context.Movie
-                         select m;
+
+                var movies = from s in _context.Movie
+                         select s;
 
             // Use LINQ to get list of genres.
             IQueryable<string> genreQuery = from s in _context.Movie
