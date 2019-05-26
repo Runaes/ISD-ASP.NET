@@ -24,6 +24,7 @@ namespace MvcMovie.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+					b.Property<bool>("IsAdmin");
 
                     b.Property<string>("Address")
                         .IsRequired();

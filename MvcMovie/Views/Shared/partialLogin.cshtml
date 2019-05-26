@@ -1,0 +1,27 @@
+﻿@using MvcMovie.Controllers
+
+@if (AccountsController.Account != null)
+{
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @AccountsController.Account.FirstName!</a>
+            </li>
+            <li>
+                <button class="nav-link text-dark" type="submit" class="btn btn-link navbar-btn navbar-link" asp-route-returnUrl="@{AccountsController.Account = null; Url.Action("Index", "Home", new { area = "" });}">Logout</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+<ul class="nav navbar-nav navbar-right">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Create">Register</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Login">Login</a>
+    </li>
+</ul>
+}

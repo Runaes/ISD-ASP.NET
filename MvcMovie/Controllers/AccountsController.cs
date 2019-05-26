@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
 {
-    public class AccountsController : Controller
+	public class AccountsController : Controller
     {
         private readonly MvcMovieContext _context;
 
@@ -64,8 +62,49 @@ namespace MvcMovie.Controllers
             return View(account);
         }
 
-        // GET: Accounts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+		public IActionResult Login()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Login([Bind("Email,Password")] Account account)
+		{
+			var user = _context.Account.FirstOrDefault(acct => acct.Email == account.Email && acct.Password == account.Password);
+
+			if (user != null)
+			{
+				Account = user;
+				return View("../Home/Index");
+			}
+			else if (account.Email == "mvcSupport@mvcSupport" && account.Password == "mvcSupport")
+			{
+				Account = new Account() { FirstName = "Movie Support" };
+			}
+			return View(account);
+		}
+
+
+		public static bool IsSupport => Account != null && Account.Password == null;
+		public static Account Account { get; set; }
+
+		class Identity : IIdentity
+		{
+			public Identity(bool isAuth, string name)
+			{
+				IsAuthenticated = isAuth;
+				Name = name;
+			}
+			public string AuthenticationType => string.Empty;
+
+			public bool IsAuthenticated { get; }
+
+			public string Name { get; }
+		}
+
+		// GET: Accounts/Edit/5
+		public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
