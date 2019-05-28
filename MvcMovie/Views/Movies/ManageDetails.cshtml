@@ -53,9 +53,9 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-    <img src="@Html.DisplayFor(model =>model.ImageURL)" style="height:900px;width:600px;" />
+    <img src="@Html.DisplayFor(model =>model.ImageURL)" style="height:600px;width:400px;" />
 </div>
-<div>
-    <a asp-action="Index">Back to list</a> | 
+<div> 
+    <br /><a asp-action="Index">Back to list</a> | 
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
 </div>

@@ -53,10 +53,10 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-    <img src="@Html.DisplayFor(model =>model.ImageURL)" style="height:900px;width:600px;" />
+    <img src="@Html.DisplayFor(model =>model.ImageURL)" style="height:600px;width:400px;" />
 </div>
 
 <div>
-    <a asp-action="BrowseCollection">Back to list</a> | 
+    <br /><a asp-action="BrowseCollection">Back to list</a> | 
     <a asp-action="AddToOrder" asp-route-id="@Model.Id">Add to order</a>
 </div>
