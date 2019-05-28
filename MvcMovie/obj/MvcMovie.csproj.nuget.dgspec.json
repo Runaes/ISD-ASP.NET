@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj": {}
+    "G:\\GitHub\\ISD-ASP.NET2\\MvcMovie\\MvcMovie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj": {
+    "G:\\GitHub\\ISD-ASP.NET2\\MvcMovie\\MvcMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj",
+        "projectUniqueName": "G:\\GitHub\\ISD-ASP.NET2\\MvcMovie\\MvcMovie.csproj",
         "projectName": "MvcMovie",
-        "projectPath": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj",
-        "packagesPath": "C:\\Users\\wardl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\obj\\",
+        "projectPath": "G:\\GitHub\\ISD-ASP.NET2\\MvcMovie\\MvcMovie.csproj",
+        "packagesPath": "C:\\Users\\hanse\\.nuget\\packages\\",
+        "outputPath": "G:\\GitHub\\ISD-ASP.NET2\\MvcMovie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wardl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hanse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

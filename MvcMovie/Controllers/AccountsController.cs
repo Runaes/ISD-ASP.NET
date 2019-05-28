@@ -42,8 +42,30 @@ namespace MvcMovie.Controllers
             return View(account);
         }
 
+        public async Task<IActionResult> Summary(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Account
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return View(account);
+        }
+
         // GET: Accounts/Create
         public IActionResult Create()
+        {
+            return View();
+        }
+
+        public IActionResult CreateSuccess()
         {
             return View();
         }
@@ -59,7 +81,8 @@ namespace MvcMovie.Controllers
             {
                 _context.Add(account);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Summary", new { Id = account.ID });
+
             }
             return View(account);
         }
@@ -115,6 +138,57 @@ namespace MvcMovie.Controllers
             return View(account);
         }
 
+        public async Task<IActionResult> Changes(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Account.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Changes(int id, [Bind("ID,FirstName,LastName,Email,Password,ConfirmPassword,Address,PhoneNumber")] Account account)
+        {
+            if (id != account.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(account);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AccountExists(account.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Summary", new { Id = account.ID });
+            }
+            return View(account);
+        }
+
+
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -131,6 +205,16 @@ namespace MvcMovie.Controllers
             }
 
             return View(account);
+        }
+
+        [HttpPost, ActionName("Cancel")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CancelConfirmed(int id)
+        {
+            var account = await _context.Account.FindAsync(id);
+            _context.Account.Remove(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Create));
         }
 
         // POST: Accounts/Delete/5
