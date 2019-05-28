@@ -26,7 +26,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1999-5-19"),
                         Genre = "Science Fiction",
                         Price = 5.99M,
-                        Stock = 12
+                        Stock = 12,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
 
                     new Movie
@@ -35,7 +38,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("2002-5-16"),
                         Genre = "Science Fiction",
                         Price = 5.99M,
-                        Stock = 5
+                        Stock = 5,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
 
                     new Movie
@@ -44,7 +50,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1986-2-23"),
                         Genre = "Comedy",
                         Price = 6.99M,
-                        Stock = 4
+                        Stock = 4,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
 
                     new Movie
@@ -53,7 +62,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("2004-6-11"),
                         Genre = "Comedy",
                         Price = 3.99M,
-                        Stock = 9
+                        Stock = 9,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -61,7 +73,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1972-6-11"),
                         Genre = "Crime",
                         Price = 5.49M,
-                        Stock = 4
+                        Stock = 4,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -69,7 +84,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1994-5-16"),
                         Genre = "Drama",
                         Price = 9.99M,
-                        Stock = 16
+                        Stock = 16,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -77,7 +95,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1993-2-21"),
                         Genre = "Biography",
                         Price = 2.49M,
-                        Stock = 6
+                        Stock = 6,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -85,7 +106,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1980-12-13"),
                         Genre = "Drama",
                         Price = 7.49M,
-                        Stock = 3
+                        Stock = 3,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -93,7 +117,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1942-6-14"),
                         Genre = "Drama",
                         Price = 5.49M,
-                        Stock = 5
+                        Stock = 5,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -101,7 +128,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1941-4-18"),
                         Genre = "Drama",
                         Price = 16.99M,
-                        Stock = 4
+                        Stock = 4,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -109,7 +139,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1939-7-09"),
                         Genre = "Drama",
                         Price = 11.99M,
-                        Stock = 7
+                        Stock = 7,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -117,7 +150,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1939-6-13"),
                         Genre = "Adventure",
                         Price = 3.99M,
-                        Stock = 3
+                        Stock = 3,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -125,7 +161,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1962-8-18"),
                         Genre = "Adventure",
                         Price = 8.49M,
-                        Stock = 13
+                        Stock = 13,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -133,7 +172,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1952-6-25"),
                         Genre = "Comedy",
                         Price = 9.49M,
-                        Stock = 11
+                        Stock = 11,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -141,7 +183,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1946-3-11"),
                         Genre = "Drama",
                         Price = 5.99M,
-                        Stock = 1
+                        Stock = 1,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -149,7 +194,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1959-11-01"),
                         Genre = "Comedy",
                         Price = 3.99M,
-                        Stock = 8
+                        Stock = 8,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -157,7 +205,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1959-3-26"),
                         Genre = "Adventure",
                         Price = 7.99M,
-                        Stock = 15
+                        Stock = 15,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -165,7 +216,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1984-8-10"),
                         Genre = "Biography",
                         Price = 14.99M,
-                        Stock = 5
+                        Stock = 5,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -173,7 +227,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("2003-7-18"),
                         Genre = "Adventure",
                         Price = 12.99M,
-                        Stock = 6
+                        Stock = 6,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -181,7 +238,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("2000-4-05"),
                         Genre = "Action",
                         Price = 3.49M,
-                        Stock = 4
+                        Stock = 4,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -189,7 +249,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1981-1-03"),
                         Genre = "Action",
                         Price = 5.49M,
-                        Stock = 13
+                        Stock = 13,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "Science Fiction"
                     },
                     new Movie
                     {
@@ -197,7 +260,10 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1962-3-11"),
                         Genre = "Crime",
                         Price = 8.99M,
-                        Stock = 7
+                        Stock = 7,
+                        Director = "Science Fiction",
+                        Description = "Science Fiction",
+                        ImageURL = "https://snworksceo.imgix.net/tdl/25189dfc-e7c3-4e3e-930e-def95e9aec35.sized-1000x1000.jpg"
                     }
                 );
                 context.SaveChanges();

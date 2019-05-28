@@ -15,5 +15,8 @@ namespace MvcMovie.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
         public int Stock { get; set; }
+        public string Director { get; set; }
+        public string Description { get; set; }
+        public string ImageURL { get; set; }
     }
 }
