@@ -8,82 +8,85 @@ using MvcMovie.Models;
 namespace MvcMovie.Controllers
 {
 	public class AccountsController : Controller
-    {
-        private readonly MvcMovieContext _context;
+	{
+		private readonly MvcMovieContext _context;
 
-        public AccountsController(MvcMovieContext context)
-        {
-            _context = context;
-        }
+		public AccountsController(MvcMovieContext context)
+		{
+			_context = context;
+		}
 
-        // GET: Accounts
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Account.ToListAsync());
-        }
+		// GET: Accounts
+		public async Task<IActionResult> Index()
+		{
+			return View(await _context.Account.ToListAsync());
+		}
 
-        // GET: Accounts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: Accounts/Details/5
+		public async Task<IActionResult> Details(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (account == null)
-            {
-                return NotFound();
-            }
+			var account = await _context.Account
+				.FirstOrDefaultAsync(m => m.ID == id);
+			if (account == null)
+			{
+				return NotFound();
+			}
 
-            return View(account);
-        }
+			return View(account);
+		}
 
-        public async Task<IActionResult> Summary(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		public async Task<IActionResult> Summary(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (account == null)
-            {
-                return NotFound();
-            }
+			var account = await _context.Account
+				.FirstOrDefaultAsync(m => m.ID == id);
+			if (account == null)
+			{
+				return NotFound();
+			}
 
-            return View(account);
-        }
+			return View(account);
+		}
 
-        // GET: Accounts/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+		// GET: Accounts/Create
+		public IActionResult Create()
+		{
+			return View();
+		}
 
-        public IActionResult CreateSuccess()
-        {
-            return View();
-        }
+		public IActionResult CreateSuccess()
+		{
+			return View();
+		}
 
-        // POST: Accounts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email,Password,ConfirmPassword,Address,PhoneNumber")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Summary", new { Id = account.ID });
+		// POST: Accounts/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email,Password,ConfirmPassword,Address,PhoneNumber")] Account account)
+		{
+			if (ModelState.IsValid)
+			{
+				_context.Add(account);
+				await _context.SaveChangesAsync();
+				Account = account;
+				return RedirectToAction("Summary", new { Id = account.ID });
 
-            }
-            return View(account);
-        }
+			}
+			return View(account);
+		}
+
+		public static bool LoginFailed { get; set; }
 
 		public IActionResult Login()
 		{
@@ -95,7 +98,7 @@ namespace MvcMovie.Controllers
 		public IActionResult Login([Bind("Email,Password")] Account account)
 		{
 			var user = _context.Account.FirstOrDefault(acct => acct.Email == account.Email && acct.Password == account.Password);
-
+			LoginFailed = false;
 			if (user != null)
 			{
 				Account = user;
@@ -104,6 +107,11 @@ namespace MvcMovie.Controllers
 			else if (account.Email == "mvcSupport@mvcSupport" && account.Password == "mvcSupport")
 			{
 				Account = new Account() { FirstName = "Movie Support" };
+				return View("../Home/Index");
+			}
+			else if (account.Email != null)
+			{
+				LoginFailed = true;
 			}
 			return View(account);
 		}
