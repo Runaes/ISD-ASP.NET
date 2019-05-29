@@ -43,6 +43,8 @@ namespace MvcMovie.Migrations
                     b.Property<string>("Password")
                         .IsRequired();
 
+                    b.Property<string>("PhoneNumber");
+
                     b.HasKey("ID");
 
                     b.ToTable("Account");
@@ -54,7 +56,13 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Director");
+
                     b.Property<string>("Genre");
+
+                    b.Property<string>("ImageURL");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");

@@ -14,7 +14,8 @@ namespace MvcMovie.Models
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "email is required.")]
+        
+        [Required(ErrorMessage = "Email is required.")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -29,5 +30,8 @@ namespace MvcMovie.Models
 
         [Required(ErrorMessage = "Address is required.")]
         public string Address { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 }
