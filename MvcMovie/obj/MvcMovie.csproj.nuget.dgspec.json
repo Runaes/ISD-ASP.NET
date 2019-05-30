@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yassy\\source\\repos\\New folder\\MvcMovie\\MvcMovie.csproj": {}
+    "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yassy\\source\\repos\\New folder\\MvcMovie\\MvcMovie.csproj": {
+    "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yassy\\source\\repos\\New folder\\MvcMovie\\MvcMovie.csproj",
+        "projectUniqueName": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj",
         "projectName": "MvcMovie",
-        "projectPath": "C:\\Users\\yassy\\source\\repos\\New folder\\MvcMovie\\MvcMovie.csproj",
-        "packagesPath": "C:\\Users\\yassy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yassy\\source\\repos\\New folder\\MvcMovie\\obj\\",
+        "projectPath": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\MvcMovie.csproj",
+        "packagesPath": "C:\\Users\\wardl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wardl\\Source\\Repos\\Runaes\\ISD-ASP.NET\\MvcMovie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\yassy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wardl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

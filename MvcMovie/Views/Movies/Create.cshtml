@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@* ALLOWS THE USER TO ADD MOVIES TO THE CATALOGUE *@
 <h1>Create</h1>
 
 <h4>Movie</h4>
@@ -63,6 +63,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@* PERFORMS CLIENT-SIDE VALIDATION - SEE MoviesController.cs FOR SERVER-SIDE VALIDATION*@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
