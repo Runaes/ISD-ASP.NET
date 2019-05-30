@@ -178,3 +178,5 @@ C:\Users\ewaep\source\repos\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovi
 C:\Users\ewaep\source\repos\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\MvcMovie.csprojAssemblyReference.cache
 C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Accounts\Login.g.cshtml.cs
 C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Shared\partialLogin.g.cshtml.cs
+C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Orders\Index.g.cshtml.cs
+C:\Users\wardl\Source\Repos\Runaes\ISD-ASP.NET\MvcMovie\obj\Debug\netcoreapp2.2\Razor\Views\Accounts\Logout.g.cshtml.cs

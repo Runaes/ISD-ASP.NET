@@ -116,8 +116,24 @@ namespace MvcMovie.Controllers
 			return View(account);
 		}
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout([Bind("Email,Password")] Account account)
+        {
+            Account = null;
+            LoginFailed = false;
+            return View("../Home/Index");
 
-		public static bool IsSupport => Account != null && Account.Password == null;
+        }
+        public IActionResult Logout()
+        {
+            Account = null;
+            LoginFailed = false;
+            return View("../Home/Index");
+            //return View();
+        }
+
+        public static bool IsSupport => Account != null && Account.Password == null;
 		public static Account Account { get; set; }
 
 		class Identity : IIdentity
