@@ -18,7 +18,7 @@ namespace MvcMovie.Controllers
             _context = context;
         }
 
-        // GET: Movies
+        // Filters movies according to the filters chosen by the user.
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string movieGenre, string searchString, string currentGenre)
         {
 
@@ -46,7 +46,7 @@ namespace MvcMovie.Controllers
             var movies = from s in _context.Movie
                          select s;
 
-            // Use LINQ to get list of genres.
+            // Gets the list of genres.
             IQueryable<string> genreQuery = from s in _context.Movie
                                             orderby s.Genre
                                             select s.Genre;
@@ -97,7 +97,6 @@ namespace MvcMovie.Controllers
                     movies = movies.OrderByDescending(s => s.Title);
                     break;
             }
-
             var movieGenreVM = new MovieGenreViewModel
             {
                 Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
@@ -107,6 +106,7 @@ namespace MvcMovie.Controllers
             return View(movieGenreVM);
         }
 
+        // Sorts movies into the order desired by the user.
         public async Task<IActionResult> BrowseCollection(string sortOrder, string currentFilter, string movieGenre, string searchString, string currentGenre)
         {
 
@@ -134,7 +134,7 @@ namespace MvcMovie.Controllers
             var movies = from s in _context.Movie
                          select s;
 
-            // Use LINQ to get list of genres.
+            // Get list of genres.
             IQueryable<string> genreQuery = from s in _context.Movie
                                             orderby s.Genre
                                             select s.Genre;
@@ -195,19 +195,19 @@ namespace MvcMovie.Controllers
             return View(movieGenreVM);
         }
 
-        // GET: Movies/Create
+        // View for adding a movie to the catalogue.
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Adds a movie to the catalogue. 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Stock,Director,Description,ImageURL")] Movie movie)
         {
+            // PERFORMS SERVER-SIDE VALIDATION - confirmed working with javascript disabled on client.
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
@@ -217,7 +217,7 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Edit/5
+        // View for editing a movie in the catalogue.
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -233,9 +233,7 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
-        // POST: Movies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Edits a movie in a catalogue.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price,Stock,Director,Description,ImageURL")] Movie movie)
@@ -268,7 +266,7 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Delete/5
+        // Returns view to delete a movie.
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -286,7 +284,7 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Deletes a movie from the catalogue.
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -301,7 +299,7 @@ namespace MvcMovie.Controllers
         {
             return _context.Movie.Any(e => e.Id == id);
         }
-        // GET: Movies/Details/5
+        // Shows the details of a movie.
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -318,7 +316,7 @@ namespace MvcMovie.Controllers
 
             return View(movie);
         }
-        // GET: Movies/ManageDetails/6
+        // Shows the details of a movie as well as a link to the edit page when accessed with admin credentials.
         public async Task<IActionResult> ManageDetails(int? id)
         {
             if (id == null)
