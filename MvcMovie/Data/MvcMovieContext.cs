@@ -18,6 +18,6 @@ namespace MvcMovie.Models
 
         public DbSet<MvcMovie.Models.Account> Account { get; set; }
 
-		public DbSet<Timestamps> Timestamps { get; set; }
+		public DbSet<Timestamp> Timestamps { get; set; }
     }
 }
