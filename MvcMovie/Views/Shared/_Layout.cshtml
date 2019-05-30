@@ -31,9 +31,10 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (AccountsController.Account != null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Manage Collection</a>
-                            </li>
+                        <li class="nav-item">
+                            <!--<a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Manage Collection</a> //Dont think we need this in customers login-->
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="BrowseCollection">Browse Collection</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
                         </li>
