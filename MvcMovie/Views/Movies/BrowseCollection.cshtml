@@ -3,10 +3,12 @@
 @{
     ViewData["Title"] = "BrowseCollection";
 }
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-    </div>
+@* ALLOWS THE USER TO BROWSE THE CATALOGUE*@
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
 <h2>Browse our collection using the tools below.</h2>
+@* PROVIDES THE ABILITY TO FILTER MOVIES BY GENRE AND SEARCH FOR A STRING IN THE TITLE (.contains)*@
 <form asp-controller="Movies" asp-action="BrowseCollection" method="get">
     <p>
 
@@ -22,9 +24,10 @@
     </p>
 </form>
 
+@* ALLOWS THE USER TO CHOOSE HOW THEY WOULD LIKE TO SORT THE MOVIE CATALOGUE*@
 <table class="table">
     <thead>
-        
+
         <tr>
             <th>
                 @Html.ActionLink("Title", "BrowseCollection", new { currentGenre = ViewBag.CurrentGenre, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.NameSortParm })
@@ -47,30 +50,30 @@
     <tbody>
         @foreach (var item in Model.Movies)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem =>item.ImageURL)" style="height:210px;width:140px;" />
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="AddToOrder" asp-route-id="@item.Id">Add to order</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem =>item.ImageURL)" style="height:210px;width:140px;" />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="AddToOrder" asp-route-id="@item.Id">Add to order</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

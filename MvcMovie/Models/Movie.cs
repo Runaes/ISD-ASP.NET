@@ -7,16 +7,34 @@ namespace MvcMovie.Models
     public class Movie
     {
         public int Id { get; set; }
+
+        [StringLength(60, MinimumLength = 1)]
+        [Required]
         public string Title { get; set; }
+        [Required]
         [Display(Name = "Release Date")]
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
+        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        [Required]
+        [StringLength(30)]
         public string Genre { get; set; }
+        [Range(0, 100)]
+        [Required]
+        [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
+        [Range(0, 100)]
+        [Required]
         public int Stock { get; set; }
+        [Required]
+        [StringLength(60)]
         public string Director { get; set; }
+        [Required]
+        [StringLength(3000)]
         public string Description { get; set; }
+        [Required]
+        [StringLength(3000)]
         public string ImageURL { get; set; }
     }
 }
