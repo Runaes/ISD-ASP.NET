@@ -7,6 +7,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 </div>
+<script src="~/js/site.js"></script>
 <h2>Browse our collection using the tools below.</h2>
 @* PROVIDES THE ABILITY TO FILTER MOVIES BY GENRE AND SEARCH FOR A STRING IN THE TITLE (.contains)*@
 <form asp-controller="Movies" asp-action="BrowseCollection" method="get">
@@ -71,7 +72,8 @@
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="AddToOrder" asp-route-id="@item.Id">Add to order</a>
+                    <a asp-action="AddToOrder" asp-route-id="@item.Id">Add to order</a><br/>
+                    
                 </td>
             </tr>
         }
