@@ -274,7 +274,17 @@ namespace MvcMovie.Controllers
             return View(account);
         }
 
-        [HttpPost, ActionName("Cancel")]
+		public async Task<IActionResult> ClearTimestamps()
+		{
+			_context.RemoveRange(_context.Timestamps.Where(t => t.AccountID == Account.ID).ToArray());
+
+			await _context.SaveChangesAsync();
+			Account.Timestamps.Clear();
+
+			return RedirectToAction("Summary", new { Id = Account.ID });
+		}
+
+		[HttpPost, ActionName("Cancel")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelConfirmed(int id)
         {

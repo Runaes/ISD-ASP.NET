@@ -13,87 +13,94 @@
 }
 else
 {
-    <div>
-        @if (!AccountsController.IsSupport)
-        {
-            <h3>Account Details</h3>
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.FirstName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.LastName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.LastName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Password)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Password)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Address)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.PhoneNumber)
-                </dd>
-            </dl>
-        }
-        <h3>Last Login</h3>
+<div>
+    @if (!AccountsController.IsSupport)
+    {
+        <h3>Account Details</h3>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+        </dl>
+    }
+    <h3>Last Login</h3>
 
-        @if (AccountsController.Account.Timestamps != null)
-        {
-            <table class="table">
-                <thead>
+    @if (AccountsController.Account.Timestamps != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.ActionLink("Time", "BrowseCollection", new { currentTime = ViewBag.LoginTime, sortOrder = ViewBag.DateSortParm })
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var time in AccountsController.Account.Timestamps.Select(t => t.LoginTime.ToLocalTime()))
+                {
                     <tr>
-                        <th>
-                            @Html.ActionLink("Time", "BrowseCollection", new { currentTime = ViewBag.LoginTime, sortOrder = ViewBag.DateSortParm })
-                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => time)
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var time in AccountsController.Account.Timestamps.Select(t => t.LoginTime.ToLocalTime()))
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => time)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </div>
+                }
+            </tbody>
+        </table>
+
+        <form asp-area="" asp-controller="Accounts" asp-action="ClearTimestamps">
+            <input type="hidden" asp-for="ID" />
+            <input type="submit" value="Clear all login times." class="btn btn-danger" />
+        </form>
+    }
+</div>
+
 }
 @if (!AccountsController.IsSupport)
 {
-    <div>@if (AccountsController.IsNew)
-    {
-        <form asp-action="Cancel">
-            <input type="hidden" asp-for="ID" />
-            <input type="submit" value="Cancel Registration" class="btn btn-danger" /> |
-            <a asp-action="Changes" asp-route-id="@Model.ID">Edit details</a>
+    <div>
+        @if (AccountsController.IsNew)
+        {
+            <form asp-action="Cancel">
+                <input type="hidden" asp-for="ID" />
+                <input type="submit" value="Cancel Registration" class="btn btn-danger" /> |
 
-        </form>
-    }
+            </form>
+        }
+        <a asp-action="Changes" asp-route-id="@Model.ID">Edit details</a>
         <br />
         <br />
         <br />
