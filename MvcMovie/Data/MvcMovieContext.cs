@@ -17,5 +17,7 @@ namespace MvcMovie.Models
         public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
 
         public DbSet<MvcMovie.Models.Account> Account { get; set; }
+
+		public DbSet<Timestamp> Timestamps { get; set; }
     }
 }

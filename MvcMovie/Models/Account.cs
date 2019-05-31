@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcMovie.Models
 {
@@ -33,5 +35,8 @@ namespace MvcMovie.Models
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-    }
+
+		public virtual ICollection<Timestamp> Timestamps { get; set; }
+
+	}
 }

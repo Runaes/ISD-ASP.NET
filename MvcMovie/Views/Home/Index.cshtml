@@ -1,13 +1,19 @@
-﻿@{
+﻿@using MvcMovie.Controllers
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="text-center">
-        <br />
-        <h1 class="display-4">You have logged in successfully.</h1>
+<div class="text-center">
+    <br />
+    <div class="display-4">
+        You have logged @if (AccountsController.Account == null) {
+        <div>out</div>
+            } else {
+    <div>in</div>} successfully.</ h1 >
         <br />
         <br />
         <div>
             <a asp-area="" asp-controller="Movies" asp-action="BrowseCollection"> <h2>Continue browsing.</h2> </a>
         </div>
-    </div>
+</div>

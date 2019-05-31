@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/MvcMovie/v16/Server/sqlite3/db.lock
+/.vs/ISD-ASP.NET/config/applicationhost.config
+/.vs/*
+/MvcMovie/obj/*
+/MvcMovie/bin/*

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,11 @@ namespace MvcMovie.Controllers
 		public async Task<IActionResult> Index()
 		{
 			return View(await _context.Account.ToListAsync());
+		}
+
+		public IActionResult GoToSummary()
+		{
+			return RedirectToAction("Summary", new { Id = Account.ID });
 		}
 
 		// GET: Accounts/Details/5
@@ -49,7 +55,7 @@ namespace MvcMovie.Controllers
 
 			var account = await _context.Account
 				.FirstOrDefaultAsync(m => m.ID == id);
-			if (account == null)
+			if (account == null && id != 0)
 			{
 				return NotFound();
 			}
@@ -60,11 +66,13 @@ namespace MvcMovie.Controllers
 		// GET: Accounts/Create
 		public IActionResult Create()
 		{
+			IsNew = true;
 			return View();
 		}
 
 		public IActionResult CreateSuccess()
 		{
+			IsNew = false;
 			return View();
 		}
 
@@ -95,44 +103,51 @@ namespace MvcMovie.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Login([Bind("Email,Password")] Account account)
+		public async Task<IActionResult> Login([Bind("Email,Password")] Account account)
 		{
 			var user = _context.Account.FirstOrDefault(acct => acct.Email == account.Email && acct.Password == account.Password);
 			LoginFailed = false;
 			if (user != null)
 			{
 				Account = user;
-				return View("../Home/Index");
 			}
 			else if (account.Email == "mvcSupport@mvcSupport" && account.Password == "mvcSupport")
 			{
 				Account = new Account() { FirstName = "Movie Support" };
-				return View("../Home/Index");
 			}
 			else if (account.Email != null)
 			{
 				LoginFailed = true;
 			}
+
+			if (Account != null)
+			{
+				_context.Add(new Timestamp() { ID = Account.ID, LoginTime = DateTime.UtcNow });
+				await _context.SaveChangesAsync();
+				return View("../Home/Index");
+			}
 			return View(account);
 		}
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout([Bind("Email,Password")] Account account)
+        {
+            Account = null;
+            LoginFailed = false;
+            return View("../Home/Index");
 
-		public static bool IsSupport => Account != null && Account.Password == null;
+        }
+        public IActionResult Logout()
+        {
+            Account = null;
+            LoginFailed = false;
+            return View("../Home/Index");
+        }
+
+        public static bool IsSupport => Account != null && Account.Password == null;
 		public static Account Account { get; set; }
-
-		class Identity : IIdentity
-		{
-			public Identity(bool isAuth, string name)
-			{
-				IsAuthenticated = isAuth;
-				Name = name;
-			}
-			public string AuthenticationType => string.Empty;
-
-			public bool IsAuthenticated { get; }
-
-			public string Name { get; }
-		}
+		public static bool IsNew { get; set; }
 
 		// GET: Accounts/Edit/5
 		public async Task<IActionResult> Edit(int? id)
@@ -187,6 +202,7 @@ namespace MvcMovie.Controllers
 
         public async Task<IActionResult> Changes(int? id)
         {
+			IsNew = false;
             if (id == null)
             {
                 return NotFound();
@@ -258,7 +274,8 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelConfirmed(int id)
         {
-            var account = await _context.Account.FindAsync(id);
+			IsNew = false;
+			var account = await _context.Account.FindAsync(id);
             _context.Account.Remove(account);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Create));

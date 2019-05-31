@@ -5,10 +5,10 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Edit", "Movies", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @AccountsController.Account.FirstName!</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="GoToSummary">Hello @AccountsController.Account.FirstName!</a>
             </li>
             <li>
-                <button class="nav-link text-dark" type="submit" class="btn btn-link navbar-btn navbar-link" asp-route-returnUrl="@{AccountsController.Account = null; AccountsController.LoginFailed = false; Url.Action("Index", "Home", new { area = "" });}">Logout</button>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Logout">Logout</a>
             </li>
         </ul>
     </form>
