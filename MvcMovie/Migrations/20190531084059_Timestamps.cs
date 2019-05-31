@@ -54,18 +54,12 @@ namespace MvcMovie.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LoginTime = table.Column<DateTime>(nullable: false),
-                    AccountID = table.Column<int>(nullable: true)
+                    AccountID = table.Column<int>(nullable: false),
+                    LoginTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Timestamps", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Timestamps_Account_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Account",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

@@ -6,8 +6,8 @@ namespace MvcMovie.Models
 {
 	public class Timestamp
 	{
-		[ForeignKey("Account")]
 		public int ID { get; set; }
+		public int AccountID { get; set; }
 		public DateTime LoginTime { get; set; }
 	}
 }

@@ -36,6 +36,9 @@ namespace MvcMovie.Models
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+		[Display(Name = "Admin")]
+		public bool IsAdmin { get; set; }
+
 		public virtual ICollection<Timestamp> Timestamps { get; set; }
 
 	}

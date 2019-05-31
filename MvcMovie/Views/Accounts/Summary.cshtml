@@ -65,16 +65,16 @@ else
                 <thead>
                     <tr>
                         <th>
-                            @Html.ActionLink("Time", "BrowseCollection", new { currentGenre = ViewBag.LoginTime, sortOrder = ViewBag.DateSortParm })
+                            @Html.ActionLink("Time", "BrowseCollection", new { currentTime = ViewBag.LoginTime, sortOrder = ViewBag.DateSortParm })
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in AccountsController.Account.Timestamps)
+                    @foreach (var time in AccountsController.Account.Timestamps.Select(t => t.LoginTime.ToLocalTime()))
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.LoginTime)
+                                @Html.DisplayFor(modelItem => time)
                             </td>
                         </tr>
                     }

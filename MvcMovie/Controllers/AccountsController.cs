@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -113,7 +114,7 @@ namespace MvcMovie.Controllers
 			}
 			else if (account.Email == "mvcSupport@mvcSupport" && account.Password == "mvcSupport")
 			{
-				Account = new Account() { FirstName = "Movie Support" };
+				Account = new Account() { FirstName = "Movie Support", IsAdmin = true };
 			}
 			else if (account.Email != null)
 			{
@@ -122,8 +123,11 @@ namespace MvcMovie.Controllers
 
 			if (Account != null)
 			{
-				_context.Add(new Timestamp() { ID = Account.ID, LoginTime = DateTime.UtcNow });
+				_context.Timestamps.Load();
+				_context.Add(new Timestamp() { AccountID = Account.ID, LoginTime = DateTime.UtcNow });
 				await _context.SaveChangesAsync();
+				_context.Timestamps.Load();
+				Account.Timestamps = new List<Timestamp>(_context.Timestamps.Where(t => t.AccountID == Account.ID));
 				return View("../Home/Index");
 			}
 			return View(account);
@@ -145,7 +149,7 @@ namespace MvcMovie.Controllers
             return View("../Home/Index");
         }
 
-        public static bool IsSupport => Account != null && Account.Password == null;
+        public static bool IsSupport => Account?.IsAdmin ?? false;
 		public static Account Account { get; set; }
 		public static bool IsNew { get; set; }
 
@@ -170,7 +174,7 @@ namespace MvcMovie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Email,Password,ConfirmPassword,Address,PhoneNumber")] Account account)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Email,Password,ConfirmPassword,Address,PhoneNumber,IsAdmin")] Account account)
         {
             if (id != account.ID)
             {

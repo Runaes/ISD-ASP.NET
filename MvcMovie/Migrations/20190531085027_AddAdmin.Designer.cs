@@ -10,8 +10,8 @@ using MvcMovie.Models;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20190530132629_Timestamps")]
-    partial class Timestamps
+    [Migration("20190531085027_AddAdmin")]
+    partial class AddAdmin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,8 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired();
+
+                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("LastName")
                         .IsRequired();
@@ -91,11 +93,11 @@ namespace MvcMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Timestamp", b =>
                 {
-                    b.Property<int?>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountID");
+                    b.Property<int>("AccountID");
 
                     b.Property<DateTime>("LoginTime");
 
@@ -110,7 +112,8 @@ namespace MvcMovie.Migrations
                 {
                     b.HasOne("MvcMovie.Models.Account")
                         .WithMany("Timestamps")
-                        .HasForeignKey("AccountID");
+                        .HasForeignKey("AccountID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
