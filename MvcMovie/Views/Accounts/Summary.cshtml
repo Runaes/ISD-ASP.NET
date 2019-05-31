@@ -85,7 +85,7 @@ else
 }
 @if (!AccountsController.IsSupport)
 {
-    <div>@if (!AccountsController.IsNew)
+    <div>@if (AccountsController.IsNew)
     {
         <form asp-action="Cancel">
             <input type="hidden" asp-for="ID" />
